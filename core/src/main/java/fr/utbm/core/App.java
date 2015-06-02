@@ -7,8 +7,6 @@ import fr.utbm.core.dao.TemperatureDao;
 import fr.utbm.core.entity.Sensor;
 import fr.utbm.core.entity.Temperature;
 
-import org.hibernate.Session;
-
 /**
  * Hello world!
  *

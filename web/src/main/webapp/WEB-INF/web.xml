@@ -24,7 +24,13 @@
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
+    </servlet>    
+    <servlet>
+        <servlet-name>FilterParameter</servlet-name>
+        <servlet-class>fr.utbm.web.servlet.FilterParameterServlet</servlet-class>
+<!--         <jsp-file>/filter.jsp</jsp-file> -->
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>Info</servlet-name>
         <url-pattern>/Info</url-pattern>
@@ -33,6 +39,11 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterParameter</servlet-name>
+        <url-pattern>/filter</url-pattern>
+    </servlet-mapping> 
+    
     <session-config>
         <session-timeout>
             600
