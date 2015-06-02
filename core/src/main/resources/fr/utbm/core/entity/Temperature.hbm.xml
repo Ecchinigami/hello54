@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="fr.utbm.core.entity">
+    <class name="Temperature" table="temperature">
+        <id name="Tmp_Id" column="Tmp_Id">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="Tmp_Value" column="Tmp_Value" not-null="true"/>
+        <property name="Tmp_Date" column="Tmp_Date"  not-null="true"/>
+        <many-to-one name="sensor" column="Sen_Id" class="Sensor" cascade="all"></many-to-one>
+    </class>
+</hibernate-mapping>

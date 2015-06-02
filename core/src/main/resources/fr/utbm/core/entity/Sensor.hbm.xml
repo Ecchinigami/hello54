@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="fr.utbm.core.entity">
+    <class name="Sensor" table="sensor">
+        <id name="Sen_Id" column="Sen_Id">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="Sen_Label" column="Sen_Label" not-null="true"/>
+        <property name="Sta_Id" column="Sta_Id" not-null="true"/>
+        </class>
+</hibernate-mapping>

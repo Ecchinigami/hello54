@@ -8,20 +8,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Page JSP Index.jsp</h1>
-        
-        <a href="servlet/info">Servlet Test</a>
-        <br>
-
-        <a href="servlet/anno">Servlet @ Test</a>
-        <br>
-        
-        <a href="faces/pages/page1.xhtml">Face Test</a>
-        <br>
-        
-        <a href="spring">Spring Web Test</a>
-        <br>
-        
-        <a href="rest">Rest Test</a>
+        <h1>Hello World!</h1>
     </body>
 </html>

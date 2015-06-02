@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/projet">
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/UtbmDS" password="projet" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/projet" username="projet"/>
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/UtbmDS" password="java" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/projet" username="java"/>
 </Context>
