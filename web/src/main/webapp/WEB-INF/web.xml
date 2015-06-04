@@ -26,9 +26,8 @@
         <load-on-startup>2</load-on-startup>
     </servlet>    
     <servlet>
-        <servlet-name>FilterParameter</servlet-name>
+        <servlet-name>FilterParameterServlet</servlet-name>
         <servlet-class>fr.utbm.web.servlet.FilterParameterServlet</servlet-class>
-<!--         <jsp-file>/filter.jsp</jsp-file> -->
     </servlet>
     
     <servlet-mapping>
@@ -40,7 +39,7 @@
         <url-pattern>*.htm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FilterParameter</servlet-name>
+        <servlet-name>FilterParameterServlet</servlet-name>
         <url-pattern>/filter</url-pattern>
     </servlet-mapping> 
     
