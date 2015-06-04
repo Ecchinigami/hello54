@@ -13,16 +13,17 @@
     <tr>  
         <th>Action</th>  
         <th>Date</th>  
-        <th>Status</th> 
+        <th>Status</th>
     </tr>  
       
     <c:forEach var="logtemperature" items="${logtemperature}">  
         <tr>  
             <td>insertion de la temperature ${logtemperature.temperature}</td>  
             <td>${logtemperature.date}</td>  
-            <td>${logtemperature.accepted}</td> 
+            <td>${logtemperature.accepted}</td>
         </tr>  
     </c:forEach>  
 </table>  
+  
 </body>  
 </html>

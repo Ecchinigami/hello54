@@ -1,14 +1,16 @@
 package fr.utbm.core.tools;
 
+import java.util.Date;
+
 public class LogsTemperature {
     private int temperature;
-    private long date;
+    private Date date;
     private boolean accepted;
 
     public LogsTemperature() {
     }
 
-    public LogsTemperature(int temperature, long date, boolean accepted) {
+    public LogsTemperature(int temperature, Date date, boolean accepted) {
         this.temperature = temperature;
         this.date = date;
         this.accepted = accepted;
@@ -22,11 +24,11 @@ public class LogsTemperature {
         this.temperature = temperature;
     }
 
-    public long getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

@@ -29,6 +29,10 @@
         <servlet-name>FilterParameterServlet</servlet-name>
         <servlet-class>fr.utbm.web.servlet.FilterParameterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogsTemperatureServlet</servlet-name>
+        <servlet-class>fr.utbm.web.servlet.LogsTemperatureServlet</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>Info</servlet-name>
@@ -41,6 +45,10 @@
     <servlet-mapping>
         <servlet-name>FilterParameterServlet</servlet-name>
         <url-pattern>/filter</url-pattern>
+    </servlet-mapping> 
+	<servlet-mapping>
+        <servlet-name>LogsTemperatureServlet</servlet-name>
+        <url-pattern>/logs</url-pattern>
     </servlet-mapping> 
     
     <session-config>
