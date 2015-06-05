@@ -12,15 +12,16 @@
         <fieldset>
             <legend>Filter</legend>
 
-            <label for="maxTemperature">Temperature maximale<span>*</span></label>
+            <label for="maxTemperature">Temperature maximale</label>
             <input type="text" id="maxTemperature" name="maxTemperature" value="${maxTemperature }"/> <br />
 
-            <label for="minTemperature">Temperature minimale<span>*</span></label>
+            <label for="minTemperature">Temperature minimale</label>
             <input type="text" id="minTemperature" name="minTemperature" value="${minTemperature }" /> <br />
 
-            <label for="intervalDeTemps">Interval de temps <span>*</span></label>
+            <label for="intervalDeTemps">Interval de temps</label>
             <input type="intervalDeTemps" id="intervalDeTemps"
                 name="intervalDeTemps" value="${intervalDeTemps }"/> <br /> <input type="submit" value="Done" />
+                
             <br />
         </fieldset>
     </f:form>

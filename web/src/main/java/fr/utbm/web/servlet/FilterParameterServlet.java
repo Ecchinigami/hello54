@@ -12,13 +12,14 @@ import fr.utbm.core.tools.TemperatureFilter;
 public class FilterParameterServlet extends HttpServlet {
     public static final String VUE = "/WEB-INF/jsp/filter.jsp";
     public static final TemperatureFilter f=new TemperatureFilter();
+    
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
         /* Affichage de la page de filtrage */
         request.setAttribute("maxTemperature", f.getMaxTemperature());
         request.setAttribute("minTemperature", f.getMinTemperature());
         request.setAttribute("intervalDeTemps", f.getIntervalDeTemps());
 
-        System.out.println(f.getMaxTemperature());
+        //System.out.println(f.getMaxTemperature());
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
     
@@ -32,6 +33,12 @@ public class FilterParameterServlet extends HttpServlet {
             f.setMaxTemperature(maxTemperature);
             f.setMinTemperature(minTemperature);
             f.setIntervalDeTemps(intervalDeTemps);
+            
+            /* Re Affichage de la page de filtrage */
+            request.setAttribute("maxTemperature", maxTemperature);
+            request.setAttribute("minTemperature", minTemperature);
+            request.setAttribute("intervalDeTemps", intervalDeTemps);
+            this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
         } catch (Exception e) {
             /* Gérer les erreurs de validation ici. */
         }

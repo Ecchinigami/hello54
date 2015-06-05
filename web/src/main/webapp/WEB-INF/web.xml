@@ -33,6 +33,10 @@
         <servlet-name>LogsTemperatureServlet</servlet-name>
         <servlet-class>fr.utbm.web.servlet.LogsTemperatureServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RecordTemperatureServlet</servlet-name>
+        <servlet-class>fr.utbm.web.servlet.RecordTemperatureServlet</servlet-class>
+    </servlet> 
     
     <servlet-mapping>
         <servlet-name>Info</servlet-name>
@@ -49,7 +53,11 @@
 	<servlet-mapping>
         <servlet-name>LogsTemperatureServlet</servlet-name>
         <url-pattern>/logs</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecordTemperatureServlet</servlet-name>
+        <url-pattern>/record</url-pattern>
+    </servlet-mapping>
     
     <session-config>
         <session-timeout>
