@@ -5,9 +5,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>LO54 Projet - Concentrateur pour station météo</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>LO54 Projet - Concentrateur pour station météo</h1>
+        <a href="./filter">Filtre</a>
+        <a href="./logs">Logs</a>
     </body>
 </html>
