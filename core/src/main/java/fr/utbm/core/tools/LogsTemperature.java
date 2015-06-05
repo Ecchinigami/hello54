@@ -3,24 +3,24 @@ package fr.utbm.core.tools;
 import java.util.Date;
 
 public class LogsTemperature {
-    private int temperature;
+    private float temperature;
     private Date date;
     private boolean accepted;
 
     public LogsTemperature() {
     }
 
-    public LogsTemperature(int temperature, Date date, boolean accepted) {
+    public LogsTemperature(float temperature, Date date, boolean accepted) {
         this.temperature = temperature;
         this.date = date;
         this.accepted = accepted;
     }
 
-    public int getTemperature() {
+    public float getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(float temperature) {
         this.temperature = temperature;
     }
 

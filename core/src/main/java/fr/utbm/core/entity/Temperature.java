@@ -11,7 +11,6 @@ public class Temperature {
 	
 	public Temperature() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Temperature( float tmp_Value, Date tmp_Date, Sensor sensor) {

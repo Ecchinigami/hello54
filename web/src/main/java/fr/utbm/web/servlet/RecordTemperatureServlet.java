@@ -57,7 +57,9 @@ public class RecordTemperatureServlet extends HttpServlet {
 		Object obj;
 		JSONArray JSONArray;
 		JSONObject JSONObj;
-		JSONParser parser = new JSONParser();               
+		JSONParser parser = new JSONParser();   
+		
+		// Check le JSON qui doit toujours être bien formé, contenir une date, et un JSON data avec les données.
 
 		try{
 			obj = parser.parse(jsonText);
@@ -72,33 +74,16 @@ public class RecordTemperatureServlet extends HttpServlet {
 			displayResult(getJsonFailed(ERREUR_JSON_INCORRECT, "JSON erreur : "+e), response);
 			return;
 		}
-
-		String typeRequest = (String) JSONObj.get("type");
-		if(typeRequest == null || !typeRequest.equals("insert"))
-		{
-			displayResult(getJsonFailedById(ERREUR_FONCTION_INCONNUE), response);
-			return;
-		}
-
-		String typeData = (String) JSONObj.get("typeData");
-		if(typeData == null || !typeData.equals("temperature"))
-		{
-			displayResult(getJsonFailedById(ERREUR_PARAMS_INCORRECTS), response);
-			return;
-		}
-
+		
 		long dateTimestamp = 0;
 		Date d;
 		try {
 			dateTimestamp = (long) JSONObj.get("date");
-			d = new Date(dateTimestamp);
+			d = new Date(dateTimestamp*1000);
 		} catch (Exception e) {
 			displayResult(getJsonFailed(ERREUR_PARAMS_INCORRECTS, "NumberFormatException date"), response);
 			return;
 		}
-
-		// TODO : check si date acceptée
-
 		JSONObject data;
 		try {
 			data = (JSONObject) JSONObj.get("data");
@@ -106,45 +91,105 @@ public class RecordTemperatureServlet extends HttpServlet {
 			displayResult(getJsonFailed(ERREUR_PARAMS_INCORRECTS, "Data is not a JSONObject..."), response);
 			return;
 		}
+		
+		
 
-		int temperature;
+		String typeRequest = (String) JSONObj.get("type");
+		
+		switch(typeRequest)
+		{
+			case "insert":
+				receptionInsertion(JSONObj, data, dateTimestamp, d,response);
+				return;
+				
+			case "update":
+			case "delete":
+			default:
+				displayResult(getJsonFailedById(ERREUR_FONCTION_INCONNUE), response);
+				return;
+		}
+	}
+	
+	
+	
+	
+	private void receptionInsertion(JSONObject json, JSONObject jsonData, long timestamp, Date date, HttpServletResponse response) {
+			
+		
+		String typeData = (String) json.get("typeData");
+		
+		switch(typeData)
+		{
+			case "temperature":
+				Temperature temperature = receptionTemperature(json, jsonData, timestamp, date,response);
+				if(temperature == null)return;
+				
+				TemperatureDao td=new TemperatureDao();
+				td.insererTemperature(temperature);
+				// save logs 
+				LogsTemperature logTmp = new LogsTemperature();
+				logTmp.setAccepted(true);
+				logTmp.setDate(date);
+				logTmp.setTemperature(temperature.getTmp_Value());
+				LogsTemperatureDao.addTemperatureLog(logTmp);
+				
+				displayResult(getJsonSuccess("Température ("+temperature.getTmp_Value()+") insérée."), response);
+				
+				return;
+				
+			case "sensor":
+			default:
+				displayResult(getJsonFailedById(ERREUR_PARAMS_INCORRECTS), response);
+				return;
+		}
+		
+
+	}
+	
+	private Temperature receptionTemperature(JSONObject json, JSONObject jsonData, long timestamp, Date date, HttpServletResponse response) {
+		
+		long currentDate = System.currentTimeMillis() / 1000;
+		if(timestamp < currentDate - TemperatureFilter.getIntervalDeTemps() || timestamp > currentDate + TemperatureFilter.getIntervalDeTemps())
+		{
+			displayResult(getJsonFailed(ERREUR_JSON_FILTRE_REFUSE, "Date refusée par le filtre (Date trop ancienne ou trop récente)"), response);
+			return null;
+		}
+
+		float temperature;
 		try {
-			temperature = (int)(long)data.get("temperature");
+			Object temp = jsonData.get("temperature");
+			if(temp instanceof Long) temperature = (float)((Long) temp).doubleValue();
+			else temperature = (float)(double)temp;
+				
+			
 		} catch (Exception e) {
 			displayResult(getJsonFailed(ERREUR_PARAMS_INCORRECTS, "Temperature is missing in Data..."+e), response);
-			return;
+			return null;
 		}
 
 		if(temperature < TemperatureFilter.getMinTemperature() || temperature > TemperatureFilter.getMaxTemperature())
 		{
-			displayResult(getJsonFailed(ERREUR_JSON_FILTRE_REFUSE, "Temperature refusée par le filtre"), response);
-			return;
+			displayResult(getJsonFailed(ERREUR_JSON_FILTRE_REFUSE, "Temperature refusée par le filtre : ["+TemperatureFilter.getMinTemperature()+", "+TemperatureFilter.getMaxTemperature()+"]"), response);
+			
+			LogsTemperature logTmp = new LogsTemperature();
+			logTmp.setAccepted(false);
+			logTmp.setDate(date);
+			logTmp.setTemperature(temperature);
+			LogsTemperatureDao.addTemperatureLog(logTmp);
+			return null;
 		}
-
-		System.out.println("TypeRequest : "+typeRequest+" , typeData : "+typeData+" , date : "+dateTimestamp+" , data : ");
 
 		// Enregistrer température en BDD
 
-		TemperatureDao td=new TemperatureDao();
+		
 		SensorDao sd=new SensorDao();
 		Sensor s=sd.getSensorById(1);
-		Temperature t=new Temperature(temperature, d, s);
-		td.insererTemperature(t);
-
-		// save logs 
-		LogsTemperature logTmp = new LogsTemperature();
-		logTmp.setAccepted(true);
-		logTmp.setDate(new Date());
-		logTmp.setTemperature(temperature);
-		LogsTemperatureDao.listTemperature().add(logTmp);
-		
-		jsonTextReturned = getJsonSuccess("test");
-
-		if(jsonTextReturned.equals(""))
-			jsonTextReturned = getJsonFailedById(ERREUR_INCONNUE);
-
-		displayResult(jsonTextReturned, response);
+		Temperature t=new Temperature(temperature, date, s);
+		return t;
 	}
+	
+	
+	
 
 	private void displayResult(String result, HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");

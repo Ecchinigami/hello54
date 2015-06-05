@@ -8,8 +8,10 @@ import fr.utbm.core.entity.Temperature;
  
 
 public class LogsTemperatureDao {
+	
+	private static ArrayList<LogsTemperature> arr = new ArrayList<LogsTemperature>();
 
-	public static ArrayList<LogsTemperature> listTemperature() {
+	static{
 
 		ArrayList<LogsTemperature> arr = new ArrayList<LogsTemperature>();
 		
@@ -19,8 +21,14 @@ public class LogsTemperatureDao {
 		t.setTemperature(20);
 		
 		arr.add(t);
-		
-		return arr;
-		
 	}
+	
+	public static boolean addTemperatureLog(LogsTemperature t){
+		return arr.add(t);
+	}
+	
+	public static ArrayList<LogsTemperature>  getListTemperaturesLogs(){
+		return arr;
+	}
+	
 }

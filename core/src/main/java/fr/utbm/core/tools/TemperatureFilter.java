@@ -1,18 +1,18 @@
 package fr.utbm.core.tools;
 
 public class TemperatureFilter {
-    public static int minTemperature = 0;
-    public static int maxTemperature = 20;
-    public static int intervalDeTemps = 30*60*1000; // 30 minutes
+    public static float minTemperature = 0;
+    public static float maxTemperature = 20;
+    public static int intervalDeTemps = 30*60; // 30 minutes
 
     public TemperatureFilter() {
     }
 
-    public static int getMinTemperature() {
+    public static float getMinTemperature() {
         return minTemperature;
     }
 
-    public static int getMaxTemperature() {
+    public static float getMaxTemperature() {
         return maxTemperature;
     }
 
@@ -20,11 +20,11 @@ public class TemperatureFilter {
         return intervalDeTemps;
     }  
     
-    public static void setMinTemperature(int minTemperature){
+    public static void setMinTemperature(float minTemperature){
     	TemperatureFilter.minTemperature=minTemperature;
     }
 
-    public static void setMaxTemperature(int maxTemperature) {
+    public static void setMaxTemperature(float maxTemperature) {
     	TemperatureFilter.maxTemperature = maxTemperature;
     }
 

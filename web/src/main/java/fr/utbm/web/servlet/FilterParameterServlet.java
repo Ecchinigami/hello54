@@ -25,8 +25,8 @@ public class FilterParameterServlet extends HttpServlet {
     
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
         /* Récupération des champs du formulaire. */
-       int maxTemperature = Integer.parseInt(request.getParameter( "maxTemperature" ));
-       int minTemperature = Integer.parseInt(request.getParameter( "minTemperature" ));
+       float maxTemperature = Float.parseFloat(request.getParameter( "maxTemperature" ));
+       float minTemperature = Float.parseFloat(request.getParameter( "minTemperature" ));
        int intervalDeTemps = Integer.parseInt(request.getParameter( "intervalDeTemps" ));
 
         try {
