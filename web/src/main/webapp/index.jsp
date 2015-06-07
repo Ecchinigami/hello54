@@ -28,7 +28,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Concentrateur</h3>
+              <h3 class="masthead-brand"></h3>
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="./">Accueil</a></li>
@@ -45,7 +45,7 @@
             <p class="text-justify">&emsp;&emsp;Cette application développée en JEE a pour but de recevoir des températures au format JSON 
             et de les enregistrer dans une base de données grâce à Hibernate.
             Elle possède également une interface web, ci-présente, qui permet d'afficher 
-            les dernières températures recues mais aussi de paramétrer un filter sur la validation de celles-ci.</p>
+            les dernières températures recues mais aussi de paramétrer un filtre sur la validation de celles-ci.</p>
           </div>
 
           <div class="mastfoot">
