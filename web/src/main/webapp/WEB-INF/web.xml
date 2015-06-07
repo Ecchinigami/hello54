@@ -38,6 +38,12 @@
         <servlet-class>fr.utbm.web.servlet.RecordTemperatureServlet</servlet-class>
     </servlet> 
     
+    <servlet>
+		<servlet-name>Jersey Web Application</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+    
     <servlet-mapping>
         <servlet-name>Info</servlet-name>
         <url-pattern>/Info</url-pattern>
@@ -58,6 +64,10 @@
         <servlet-name>RecordTemperatureServlet</servlet-name>
         <url-pattern>/record</url-pattern>
     </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Jersey Web Application</servlet-name>
+		<url-pattern>/jersey/*</url-pattern>
+	</servlet-mapping>
     
     <session-config>
         <session-timeout>
