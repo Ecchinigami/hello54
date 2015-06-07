@@ -48,7 +48,7 @@ own fullscreen background photo to make it your own.--></p>
 
           <div class="mastfoot">
             <div class="inner">
-              <p>LO54</p>
+              <p>Projet - LO54</p>
             </div>
           </div>
 

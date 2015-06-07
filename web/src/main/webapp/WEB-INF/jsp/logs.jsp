@@ -52,7 +52,7 @@
 			      
 			    <c:forEach var="logtemperature" items="${logtemperature}">  
 			        <tr>  
-			            <td>insertion de la temperature ${logtemperature.temperature}</td>  
+			            <td>Insertion de la temperature : ${logtemperature.temperature}</td>  
 			            <td>${logtemperature.date}</td>  
 			            <td>${logtemperature.accepted}</td>
 			        </tr>  
@@ -62,7 +62,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p>LO54</p>
+              <p>Projet - LO54</p>
             </div>
           </div>
 
