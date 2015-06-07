@@ -40,10 +40,12 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Projet : Concentrateur pour station météo</h1>
-            <p class="lead"><!--Cover is a one-page template for building 
-simple and beautiful home pages. Download, edit the text, and add your 
-own fullscreen background photo to make it your own.--></p>
+            <h1 class="cover-heading">Concentrateur pour station météo</h1>
+            <br/>
+            <p class="text-justify">&emsp;&emsp;Cette application développée en JEE a pour but de recevoir des températures au format JSON 
+            et de les enregistrer dans une base de données grâce à Hibernate.
+            Elle possède également une interface web, ci-présente, qui permet d'afficher 
+            les dernières températures recues mais aussi de paramétrer un filter sur la validation de celles-ci.</p>
           </div>
 
           <div class="mastfoot">

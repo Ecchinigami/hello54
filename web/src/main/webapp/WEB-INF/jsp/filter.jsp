@@ -63,26 +63,13 @@
 				    <input type="intervalDeTemps" id="intervalDeTemps" name="intervalDeTemps" value="${intervalDeTemps }" class="form-control">
 				  </div>
 				</div>
+				<br/>
 				<div class="form-group">
 				  <div class="col-sm-4"></div>
 				  <div class="col-sm-8 text-a">
-				    <button type="submit" class="btn btn-default">Valider</button>
+				    <button type="submit" class="btn btn-default pull-left">Valider</button>
 				  </div>
 				</div>
-			</form>		        
-		
-<!-- 	            <label for="maxTemperature">Temperature maximale</label> -->
-<%-- 	            <input type="text" id="maxTemperature" name="maxTemperature" value="${maxTemperature }" style="color:black;" /> <br /> --%>
-	
-<!-- 	            <label for="minTemperature">Temperature minimale</label> -->
-<%-- 	            <input type="text" id="minTemperature" name="minTemperature" value="${minTemperature }" style="color:black;" /> <br /> --%>
-	
-<!-- 	            <label for="intervalDeTemps">Interval de temps</label> -->
-<%-- 	            <input type="intervalDeTemps" id="intervalDeTemps" name="intervalDeTemps" value="${intervalDeTemps }" style="color:black;" />  --%>
-	            
-<!-- 	            <br/><br/>  -->
-	            
-<!-- 	            <input type="submit" value="Done" style="color:black;" /> -->
 		    </f:form>
           </div>
 
