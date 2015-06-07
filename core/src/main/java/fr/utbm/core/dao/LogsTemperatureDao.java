@@ -24,6 +24,10 @@ public class LogsTemperatureDao {
 	}
 	
 	public static boolean addTemperatureLog(LogsTemperature t){
+		while (arr.size() >= 10) {
+			arr.remove(0);
+		}
+		
 		return arr.add(t);
 	}
 	
