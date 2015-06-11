@@ -7,7 +7,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import fr.utbm.core.dao.SensorDao;
 import fr.utbm.core.entity.JSONResult;
+import fr.utbm.core.entity.Sensor;
 import fr.utbm.core.entity.Temperature;
 import fr.utbm.core.tools.JSONUtils;
 import fr.utbm.core.tools.TemperatureFilter;
@@ -98,7 +100,7 @@ public class JSONParserController {
 					case "delete":
 					default:
 						result.set_typeRequest(typeRequest);
-						result.set_error(JSONUtils.ERREUR_FONCTION_INCONNUE, "Requête \""+typeRequest+"\" non disponible.");
+						result.set_error(JSONUtils.ERREUR_FONCTION_INCONNUE, "Requête '"+typeRequest+"' non disponible.");
 						return result;
 				}
 				
@@ -118,7 +120,7 @@ public class JSONParserController {
 				
 			case "sensor":
 			default:
-				jsonResult.set_error(JSONUtils.ERREUR_PARAMS_INCORRECTS, "Le type d'objet : \""+typeData+"\" n'est pas encore disponible.");
+				jsonResult.set_error(JSONUtils.ERREUR_PARAMS_INCORRECTS, "Le type d'objet : '"+typeData+"' n'est pas encore disponible.");
 				
 		}
 		
@@ -130,6 +132,10 @@ public class JSONParserController {
 		Temperature temperature = new Temperature();
 		
 		temperature.setTmp_Date(new Date(jsonResult.getDate()*1000));
+		
+		SensorDao sd=new SensorDao();
+		Sensor s=sd.getSensorById(1);
+		temperature.setSensor(s);
 
 		float temperatureValue;
 		try {

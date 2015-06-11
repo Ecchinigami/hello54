@@ -36,7 +36,7 @@ public class JSONFilterController {
 
 		if(temp.getTmp_Value() < TemperatureFilter.getMinTemperature() || temp.getTmp_Value() > TemperatureFilter.getMaxTemperature())
 		{
-			jsonResult.set_error(JSONUtils.ERREUR_JSON_FILTRE_REFUSE, "Temperature \""+temp.getTmp_Value()+"\" refusée par le filtre : ["+TemperatureFilter.getMinTemperature()+", "+TemperatureFilter.getMaxTemperature()+"]");
+			jsonResult.set_error(JSONUtils.ERREUR_JSON_FILTRE_REFUSE, "Temperature '"+temp.getTmp_Value()+"' refusée par le filtre : ["+TemperatureFilter.getMinTemperature()+", "+TemperatureFilter.getMaxTemperature()+"]");
 			return jsonResult;
 		}
 		

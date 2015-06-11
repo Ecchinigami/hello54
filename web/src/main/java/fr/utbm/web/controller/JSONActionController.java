@@ -37,7 +37,7 @@ public class JSONActionController {
 				jsonResult = insertQuery(jsonResult);
 				break;
 			default:
-				jsonResult.set_error(JSONUtils.ERREUR_FONCTION_INCONNUE, "JsonActionFilter : fonction inconnue \""+jsonResult.getTypeRequest()+"\"");
+				jsonResult.set_error(JSONUtils.ERREUR_FONCTION_INCONNUE, "JsonActionFilter : fonction inconnue '"+jsonResult.getTypeRequest()+"'");
 		}
 		
 		return jsonResult;
@@ -51,7 +51,7 @@ public class JSONActionController {
 		}
 		else
 		{
-			jsonResult.set_error(JSONUtils.ERREUR_PARAMS_INCORRECTS, "JsonActionFilter : Objet inconnu \""+jsonResult.getData()+"\"");
+			jsonResult.set_error(JSONUtils.ERREUR_PARAMS_INCORRECTS, "JsonActionFilter : Objet inconnu '"+jsonResult.getData()+"'");
 		}
 		
 		return jsonResult;
@@ -65,7 +65,7 @@ public class JSONActionController {
 		
 		// Enregistrer tout en logs
 		LogsTemperature logTmp = new LogsTemperature();
-		logTmp.setAccepted(jsonResult.isError());
+		logTmp.setAccepted(!jsonResult.isError());
 		logTmp.setDate(temperature.getTmp_Date());
 		logTmp.setTemperature(temperature.getTmp_Value());
 		LogsTemperatureDao.addTemperatureLog(logTmp);
@@ -78,6 +78,12 @@ public class JSONActionController {
 			Sensor s=sd.getSensorById(1);
 			TemperatureDao tDao = new TemperatureDao();
 			tDao.insererTemperature(temperature);
+			
+			/*TemperatureDao td=new TemperatureDao();
+			SensorDao sd=new SensorDao();
+			Sensor s=sd.getSensorById(1);
+			Temperature t=new Temperature(20, new Date(),s);
+			td.insererTemperature(t);*/
 		}
 		
 		return jsonResult;
