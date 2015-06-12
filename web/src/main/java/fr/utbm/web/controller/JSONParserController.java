@@ -137,7 +137,7 @@ public class JSONParserController {
 		Sensor s;
 		int idSensor;
 		try {
-			idSensor = (int) jsonData.get("sensor");
+			idSensor =  (new Long((long)jsonData.get("sensor"))).intValue();
 			s = sd.getSensorById(idSensor);
 		} catch (Exception e) {
 			s = null;

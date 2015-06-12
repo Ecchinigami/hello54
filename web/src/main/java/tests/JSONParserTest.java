@@ -92,7 +92,7 @@ public class JSONParserTest {
 		JSONResult result;
 		JSONParserController jsonParserController = new JSONParserController();
 		// test parsing
-		result = jsonParserController.parse("{ \"type\": \"insert\", \"typeData\":\"temperature\", \"date\":1000000, \"data\": {\"temperature\": 20, \"sensor\":1}}");
+		result = jsonParserController.parse("{ \"type\": \"insert\", \"typeData\":\"temperature\", \"date\":1000000, \"data\": {\"temperature\": 20, \"sensor\":5}}");
 		assertTrue(result.isSuccess());
 	}
 

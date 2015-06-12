@@ -51,7 +51,6 @@ public class RecordTemperatureServlet extends HttpServlet {
 	} 
 
 	private void parseJson(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("parse JSON"); 
 
 		//http://code.google.com/p/json-simple/wiki/DecodingExamples
 		// { "type": "insert", "typeData":"temperature", "date":TIMESTAMP, "data": {"temperature": 20}}
@@ -72,6 +71,11 @@ public class RecordTemperatureServlet extends HttpServlet {
 		
 		JSONActionController jsonActionController = new JSONActionController();
 		result = jsonActionController.doAction(result);
+		
+		if(result.isSuccess() && result.getData() != null)
+		{
+			result.set_message(result.getData().toString());
+		}
 		
 		
 		displayResult(JSONUtils.getJsonStringResult(result), response);

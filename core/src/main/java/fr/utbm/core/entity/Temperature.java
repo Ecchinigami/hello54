@@ -44,5 +44,9 @@ public class Temperature {
 	public void setSensor(Sensor sensor) {
 		this.sensor = sensor;
 	}
+	
+	public String toString() {
+		return "[Temperature : "+getTmp_Value()+" le "+getTmp_Date()+" par le sensor "+((getSensor() ==null)?"inconnu":getSensor().getSen_Id())+"]";
+	}
 
 }

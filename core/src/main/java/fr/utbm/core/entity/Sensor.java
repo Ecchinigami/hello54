@@ -15,7 +15,6 @@ public class Sensor {
 
 	public Sensor() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Sensor(int sen_Id, String sen_Label) {
