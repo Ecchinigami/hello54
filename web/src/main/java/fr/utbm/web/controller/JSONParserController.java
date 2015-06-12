@@ -134,7 +134,16 @@ public class JSONParserController {
 		temperature.setTmp_Date(new Date(jsonResult.getDate()*1000));
 		
 		SensorDao sd=new SensorDao();
-		Sensor s=sd.getSensorById(1);
+		Sensor s;
+		int idSensor;
+		try {
+			idSensor = (int) jsonData.get("sensor");
+			s = sd.getSensorById(idSensor);
+		} catch (Exception e) {
+			s = null;
+		}
+		if(s == null) s = sd.getSensorById(1);
+		
 		temperature.setSensor(s);
 
 		float temperatureValue;

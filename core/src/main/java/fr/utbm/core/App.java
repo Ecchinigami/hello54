@@ -22,8 +22,9 @@ public class App {
     	System.out.println("2");
     	SensorDao sd=new SensorDao();
     	System.out.println("3");
-    	Sensor s=sd.getSensorById(1);
+    	Sensor s=sd.getSensorById(10000);
     	System.out.println("4");
+    	if(s == null) s = sd.getSensorById(1);
     	Temperature t=new Temperature(20, new Date(),s);
     	System.out.println("5");
     	td.insererTemperature(t);
