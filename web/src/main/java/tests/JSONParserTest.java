@@ -86,5 +86,14 @@ public class JSONParserTest {
 		assertTrue(TemperatureFilter.getMaxTemperature() == (float)50.0);
 		assertTrue(result.isSuccess());
 	}
+	
+	@Test
+	public void testAddSensor() {
+		JSONResult result;
+		JSONParserController jsonParserController = new JSONParserController();
+		// test parsing
+		result = jsonParserController.parse("{ \"type\": \"insert\", \"typeData\":\"temperature\", \"date\":1000000, \"data\": {\"temperature\": 20, \"sensor\":1}}");
+		assertTrue(result.isSuccess());
+	}
 
 }
